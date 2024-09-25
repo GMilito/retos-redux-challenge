@@ -1,0 +1,47 @@
+.user-list {
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.user-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-list-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+.user-list-item button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-list-item button.edit {
+  background-color: #007bff;
+  color: white;
+}
+
+.user-list-item button.edit:hover {
+  background-color: #0056b3;
+}
+
+.user-list-item button.delete {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 10px;
+}
+
+.user-list-item button.delete:hover {
+  background-color: #c82333;
+}
