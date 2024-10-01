@@ -13,16 +13,16 @@ export const login = (email, password) => async (dispatch) => {
        }),
     });
     console.log('respuesta ', response)
-    if (!response.ok) {
+    if (response.status === 'error') {
       const errorData = await response.json();
       throw new Error(errorData.message || 'Login failed');
     }
     
 
-    const data = await response.json();
+    const data = await response.user();
     dispatch({ 
       type: 'LOGIN_SUCCESS', 
-      payload: { id: data.token, nombre: data.user }, 
+      payload: { id: data.id, nombre: data.nombre }, 
     });
   } catch (error) {
     dispatch({ 
