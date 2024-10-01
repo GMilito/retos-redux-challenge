@@ -1,12 +1,13 @@
 .user-list {
-  max-width: 600px;
+  max-width: 300px;
   margin: 50px auto;
+  padding-left: 10px;
 }
 
 .user-list-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start; /* Mantiene el índice a la izquierda */
+  align-items: flex-start;     /* Alinea los detalles del usuario en la parte superior */
   background-color: #fff;
   padding: 15px;
   margin-bottom: 10px;
@@ -14,34 +15,39 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.user-list-item span {
+.user-index {
+  margin-right: 15px; /* Alinea el número a la izquierda */
+  font-weight: bold;
+}
+
+.user-details {
+  flex: 1; /* Ocupa el espacio restante para alinear el texto */
+}
+
+.user-name, .user-email {
+  display: block;
   font-size: 16px;
   color: #333;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.user-list-item button {
-  padding: 8px 12px;
-  font-size: 14px;
-  border: none;
+.user-email {
+  font-size: 14px; /* Hace el correo un poco más pequeño */
+  color: #666;     /* Cambia el color para diferenciarlo del nombre */
+}
+
+.add-user-btn {
+  display: inline-block;
+  background-color: #3589dc;
+  color: white;
+  padding: 10px 10px;
   border-radius: 5px;
+  border: none;
   cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 16px;
 }
 
-.user-list-item button.edit {
-  background-color: #007bff;
-  color: white;
-}
-
-.user-list-item button.edit:hover {
-  background-color: #0056b3;
-}
-
-.user-list-item button.delete {
-  background-color: #dc3545;
-  color: white;
-  margin-left: 10px;
-}
-
-.user-list-item button.delete:hover {
-  background-color: #c82333;
+.add-user-btn:hover {
+  background-color: #119f9f;
 }

@@ -39,32 +39,6 @@ export const userReducer = (state = initialState, action) => {
         error: action.payload.error,  // Guardamos el error de agregar usuario
       };
 
-    case 'EDIT_USER_SUCCESS':
-      return {
-        ...state,
-        users: state.users.map((user) => 
-          user.id === action.payload.id ? action.payload : user
-        ),  // Actualizamos el usuario editado
-      };
-
-    case 'EDIT_USER_FAILURE':
-      return {
-        ...state,
-        error: action.payload.error,  // Guardamos el error de edición
-      };
-
-    case 'DELETE_USER_SUCCESS':
-      return {
-        ...state,
-        users: state.users.filter((user) => user.id !== action.payload),  // Eliminamos el usuario
-      };
-
-    case 'DELETE_USER_FAILURE':
-      return {
-        ...state,
-        error: action.payload.error,  // Guardamos el error de eliminación
-      };
-
     default:
       return state;
   }
