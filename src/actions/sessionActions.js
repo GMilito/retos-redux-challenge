@@ -15,19 +15,18 @@ export const login = (email, password) => async (dispatch) => {
       }),
         
     });
-    console.log('Respuesta recibida:', response);
-    if (!response.ok) {
+    console.log('respuesta ', response)
+    if (response.status === 'error') {
       const errorData = await response.json();
       console.log('Error en la respuesta:', errorData);
       throw new Error(errorData.message || 'Login failed');
     }
     
 
-    const data = await response.json();
-    console.log('Datos recibidos del backend:', data);
+    const data = await response.user();
     dispatch({ 
       type: 'LOGIN_SUCCESS', 
-      payload: { nombre: data.user }, 
+      payload: { id: data.id, nombre: data.nombre }, 
     });
   } catch (error) {
     console.error('Error durante el login:', error.message);

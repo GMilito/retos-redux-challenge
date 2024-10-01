@@ -1,12 +1,12 @@
 // Acción para agregar un nuevo usuario
-export const addUser = (name, email) => async (dispatch) => {
+export const addUser = (name, email, pass) => async (dispatch) => {
   try {
-    const response = await fetch('/api/users', {
+    const response = await fetch('https://tiusr21pl.cuc-carrera-ti.ac.cr/front_auth/registro.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, email }),
+      body: JSON.stringify({ nombre: name, correo: email, contrasena: pass }),
     });
 
     if (!response.ok) {
