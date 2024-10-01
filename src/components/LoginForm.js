@@ -1,21 +1,28 @@
-// src/components/LoginForm.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/sessionActions';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import './LoginForm.css';  // Importamos el archivo de estilos
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const { loading, error } = useSelector(state => state.session);
+  const { loading, error, user } = useSelector(state => state.session); // Obtener el usuario del estado
+  const navigate = useNavigate();  // Hook para redirigir
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Formulario enviado con email:', email, 'y password:', password);
-    dispatch(login(email, password));
-   
+    dispatch(login(email, password));  // Llama a la acción de login
   };
+
+  // Redirigir a la ruta /dash si el login es exitoso
+  useEffect(() => {
+    if (user) {
+      navigate('/dash');  // Redirigir después de iniciar sesión correctamente
+    }
+  }, [user, navigate]);  // Solo se ejecuta si 'user' cambia
 
   return (
     <div className="login-container">

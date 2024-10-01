@@ -19,6 +19,23 @@ export const addUser = (name, email, pass) => async (dispatch) => {
     dispatch({ type: 'ADD_USER_FAILURE', payload: { error: error.message } });
   }
 };
+// Acción para obtener los usuarios
+export const fetchUsers = () => async (dispatch) => {
+  dispatch({ type: 'FETCH_USERS_REQUEST' });
+  try {
+    const response = await fetch('https://tiusr21pl.cuc-carrera-ti.ac.cr/front_auth/usuarios.php');
+    const data = await response.json();
+
+    if (data.status === 'success') {
+      // Despacha los usuarios obtenidos al reducer
+      dispatch({ type: 'FETCH_USERS_SUCCESS', payload: data.users });
+    } else {
+      throw new Error('Error al cargar usuarios');
+    }
+  } catch (error) {
+    dispatch({ type: 'FETCH_USERS_FAILURE', payload: error.message });
+  }
+};
 
 // Acción para editar un usuario
 export const editUser = (user) => async (dispatch) => {

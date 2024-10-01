@@ -1,30 +1,45 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, editUser } from '../actions/userActions';
+import { fetchUsers, deleteUser, editUser } from '../actions/userActions';  // Importa las acciones
 import './UserList.css';  // Importa el archivo CSS
 
 const UserList = () => {
-  const { users } = useSelector(state => state.user);
+  const { users, loading, error } = useSelector(state => state.user);  // Obtén los usuarios del estado
   const dispatch = useDispatch();
 
+  // Cargar los usuarios al montar el componente
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
   const handleEdit = (user) => {
-    // Aquí puedes implementar la funcionalidad de edición
     dispatch(editUser(user));
   };
 
   const handleDelete = (id) => {
-    // Confirmar y eliminar usuario
     dispatch(deleteUser(id));
   };
+
+  if (loading) {
+    return <p>Cargando usuarios...</p>;
+  }
+
+  if (error) {
+    return <p>Error al cargar usuarios: {error}</p>;
+  }
+
+  if (!users || users.length === 0) {
+    return <p>No se encontraron usuarios</p>;
+  }
 
   return (
     <div className="user-list">
       {users.map(user => (
         <div key={user.id} className="user-list-item">
-          <span>{user.name} - {user.email}</span>
+          <span>{user.nombre} - {user.correo}</span>
           <div>
-            <button className="edit" onClick={() => handleEdit(user)}>Edit</button>
-            <button className="delete" onClick={() => handleDelete(user.id)}>Delete</button>
+            <button className="edit" onClick={() => handleEdit(user)}>Editar</button>
+            <button className="delete" onClick={() => handleDelete(user.id)}>Eliminar</button>
           </div>
         </div>
       ))}
