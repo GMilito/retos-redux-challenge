@@ -12,7 +12,9 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Formulario enviado con email:', email, 'y password:', password);
     dispatch(login(email, password));
+   
   };
 
   return (
