@@ -19,11 +19,11 @@ export const addUser = (name, email, password) => async (dispatch) => {
     const data = await response.json();
     console.log("Datos recibidos del servidor:", data);
 
-    dispatch({ type: 'ADD_USER_SUCCESS', payload: data });
+    dispatch({ type: '??????', payload: data }); // no sabemos cual es el nombre de reducer que tenemos que usar acá?, quizas si vas a la carpeta reducers y revisas alli te enteres
     console.log("Acción ADD_USER_SUCCESS despachada con el payload:", data);
   } catch (error) {
     console.error('Error al agregar usuario:', error.message);
-    dispatch({ type: 'ADD_USER_FAILURE', payload: { error: error.message } });
+    dispatch({ type: '??????', payload: { error: error.message } }); // no sabemos cual es el nombre de reducer que tenemos que usar acá?, quizas si vas a la carpeta reducers y revisas alli te enteres
   }
 };
 

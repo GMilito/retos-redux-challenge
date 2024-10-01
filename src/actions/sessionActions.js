@@ -7,8 +7,8 @@ export const login = (email, password) => async (dispatch) => {
     const response = await fetch('https://tiusr21pl.cuc-carrera-ti.ac.cr/front_auth/auth.php?action=login', {
       method: 'POST',
       body: JSON.stringify({
-        correo: email,
-        contrasena: password    // Asegúrate de que coincide con el backend
+        aaaa: email,          // Asegúrate de que coincide con la respuesta
+        bbbb: password    // Asegúrate de que coincide con la respuesta    pista: quizas debugeando al solicitud puedes enterarte como podrias decifrar la respuesta
       }),
     });
 
@@ -28,7 +28,7 @@ export const login = (email, password) => async (dispatch) => {
 
     // Si el login es exitoso, data contiene id y nombre del usuario
     dispatch({
-      type: 'LOGIN_SUCCESS',
+      type: '???????????', // no sabemos cual es el nombre de reducer que tenemos que usar acá?, quizas si vas a la carpeta reducers y revisas alli te enteres
       payload: { user: data },  // Almacena el id y el nombre del usuario
     });
   } catch (error) {

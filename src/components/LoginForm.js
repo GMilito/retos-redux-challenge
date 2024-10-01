@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import './LoginForm.css';  // Importamos el archivo de estilos
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  //aca deberian ir algo muy importante, ¿como se manejaban las "variables" de los componente en react?
   const dispatch = useDispatch();
   const { loading, error, user } = useSelector(state => state.session); // Obtener el usuario del estado
   const navigate = useNavigate();  // Hook para redirigir
@@ -34,7 +33,7 @@ const LoginForm = () => {
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)} // acá hay una pista
             required
           />
         </div>
